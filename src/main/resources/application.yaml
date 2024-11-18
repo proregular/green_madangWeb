@@ -2,7 +2,7 @@ spring:
   application:
     name: madang
   datasource:
-    url: jdbc:mariadb://localhost/board_1
+    url: jdbc:mariadb://localhost/madang_spring
     username: root
     password: green502
 
@@ -11,3 +11,10 @@ mybatis:
   mapper-locations: mappers/**/*.xml
   configuration:
     map-underscore-to-camel-case: true
+springdoc:
+  api-docs:
+    version: openapi_3_1
+  swagger-ui:
+    default-model-expand-depth: 2
+    default-models-expand-depth: -1
+    path: /swagger
