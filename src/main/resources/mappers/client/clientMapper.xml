@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.madang.client.ClientMapper">
+    <insert id="insOrders">
+        INSERT INTO orders
+        (custid, bookid, saleprice, orderdate)
+        SELECT #{custId}, bookid, price, CURRENT_DATE
+        FROM book
+        WHERE bookid = #{bookId}
+    </insert>
+
+    <select id="selOrderList">
+        SELECT A.orderId AS orderId, A.bookId AS bookId, B.bookName AS bookName, A.salePrice AS salePrice, A.orderDate AS orderDate
+        FROM   orders A INNER JOIN book B
+            ON A.bookid = B.bookid
+        WHERE  A.custid = #{custId}
+        ORDER BY A.orderid DESC;
+    </select>
+</mapper>

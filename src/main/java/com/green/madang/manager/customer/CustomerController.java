@@ -28,8 +28,8 @@ public class CustomerController {
 
     @GetMapping
     @Operation(summary = "고객 전체 조회", description = "고객 전체 조회 API")
-    public List<CustomerGetRes> selCustomerList(@ParameterObject @ModelAttribute CustomerGetReq p) {
-        return service.selCustomerList(p);
+    public MyResponse<List<CustomerGetRes>> selCustomerList(@ParameterObject @ModelAttribute CustomerGetReq p) {
+        return new MyResponse<List<CustomerGetRes>>("고객 조회 완료" ,service.selCustomerList(p));
     }
 
     @PutMapping
